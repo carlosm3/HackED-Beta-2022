@@ -35,6 +35,7 @@ class lightbulb:
     def changeCold(self,newCold):
         self.cold = newCold
         loop.run_until_complete(changeLight(self))
+
 async def changeLight(light):
     await (light.ip).turn_on(PilotBuilder(rgb = light.rgb, brightness = light.bright, warm_white = light.warm, cold_white = light.cold))
 async def off(light):
