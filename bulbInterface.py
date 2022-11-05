@@ -39,6 +39,3 @@ async def changeLight(light):
     await (light.ip).turn_on(PilotBuilder(rgb = light.rgb, brightness = light.bright, warm_white = light.warm, cold_white = light.cold))
 async def off(light):
     await (light.ip).turn_off()
-
-light1=lightbulb("192.168.137.107",(0,255,0),255,0,255)
-light1.turnOn()
