@@ -2,31 +2,35 @@
 {% block content %}
 <h1>Playground</h1>
 <div id="playground">
-    <form data-ajax="false">
-        <!-- <div class="ip">
-            <label for="ip-address">IP Address</label>
-            <div>
-                <input type="text" name="address" required
-                    pattern="((^|\.)((25[0-5])|(2[0-4]\d)|(1\d\d)|([1-9]?\d))){4}$" id="ip-address"
-                    value="255.255.255.255" placeholder="255.255.255.255">
-            </div>
-        </div> -->
+    <form id="play" data-ajax="false">
         <div id="color-preview"></div>
-        <div>
+        <!-- <div>
             <label for="color">Select color</label>
             <input type="color" id="color-picker" name="color">
+        </div> -->
+        <div>
+            <label for="red">Red</label>
+            <input type="range" id="red" name="r" min="0" max="255" value="0">
+        </div>
+        <div>
+            <label for="green">Green</label>
+            <input type="range" id="green" name="g" min="0" max="255" value="0">
+        </div>
+        <div>
+            <label for="blue">Blue</label>
+            <input type="range" id="blue" name="b" min="0" max="255" value="0">
         </div>
         <div>
             <label for="bright">Brightness</label>
-            <input type="range" step="0.01" min="0" max="1" value="5" id="bright" name="bright">
+            <input type="range" step="0.01" min="0" max="1" value="1" id="bright" name="a">
         </div>
         <div>
             <label for="cold">Cold</label>
-            <input type="range" min="0" max="255" value="127" id="cold" name="cold">
+            <input type="range" min="0" max="255" value="0" id="cold" name="cold">
         </div>
         <div>
             <label for="warmth">Warmth</label>
-            <input type="range" min="0" max="255" value="127" id="warmth" name="warmth">
+            <input type="range" min="0" max="255" value="0" id="warmth" name="warmth">
         </div>
         <div>
             <div>

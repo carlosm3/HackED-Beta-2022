@@ -1,10 +1,11 @@
 var overlay = document.getElementById("overlay");
-var toggleSelection = document.getElementById("area");
+var toggleSelection = document.getElementById("set-area");
 var coordinateX1 = document.getElementById("x1");
 var coordinateY1 = document.getElementById("y1");
 var coordinateX2 = document.getElementById("x2");
 var coordinateY2 = document.getElementById("y2");
-var ipAddress = document.getElementById('ip-address');
+// var ipAddress = document.getElementById("ip-address");
+const streamForm = document.getElementById("stream-form");
 var elem = document.documentElement;
 var div = document.getElementById("div"),
     x1 = 0,
@@ -58,7 +59,8 @@ function mouseUp(e) {
     coordinateY2.value = y2;
     overlay.style.display = "none";
     closeFullscreen();
-    elem.removeEventListener("mousemove");
+    elem.removeEventListener("mousemove", mouseMove);
+    document.getElementById("stream-form").submit();
 }
 
 function mouseMove(e) {
@@ -73,24 +75,40 @@ toggleSelection.addEventListener("click", function () {
     elem.addEventListener("mousemove", mouseMove);
     openFullscreen();
     overlay.style.display = "block";
-    console.log("clicked");
 });
 
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 
+var x = 0;
+
 if (urlParams.get("x1")) {
     coordinateX1.value = urlParams.get("x1");
+    x += 1;
 }
 if (urlParams.get("y1")) {
     coordinateY1.value = urlParams.get("y1");
+    x += 1;
 }
 if (urlParams.get("x2")) {
     coordinateX2.value = urlParams.get("x2");
+    x += 1;
 }
 if (urlParams.get("y2")) {
     coordinateY2.value = urlParams.get("y2");
+    x += 1;
 }
-if (urlParams.get("address")) {
-    ipAddress.value = urlParams.get("address");
+
+const successMsg = document.getElementById("success-msg");
+
+const stopBtn = document.getElementById("stop-btn");
+
+if (x == 4 && urlParams.get("stop") == null) {
+    successMsg.style.display = "inline";
+    stopBtn.disabled = false;
+    toggleSelection.disabled = true;
+} else {
+    successMsg.style.display = "none";
+    stopBtn.disabled = true;
+    toggleSelection.disabled = false;
 }
