@@ -1,10 +1,9 @@
 from flask import Flask, render_template, request
-
-import app.avgRGBv2 as avgRGBv2
+# import avgRGBv2
+# from bulbInterface import lightbulb as lb
 
 app = Flask(__name__, template_folder='templates', static_folder='static')
 
-from bulbInterface import lightbulb as lb
 
 @app.route('/')
 @app.route('/index')
@@ -16,12 +15,11 @@ def index():
 def playground():
     values = {"color": request.args.get('color'), "bright": request.args.get('bright'), "cold": request.args.get('cold'), "warmth": request.args.get('warmth')}
     print(values)
-    rgb = avgRGBv2.convertHEXtoRGB(values['color'])
-    lb.changeRGB(rgb)
-    lb.changeBright(values['bright']*255)
-    lb.changeCold(values['cold'])
-    lb.changeBright(values['bright'])
-
+    # rgb = avgRGBv2.convertHEXtoRGB(values['color'])
+    # lb.changeRGB(rgb)
+    # lb.changeBright(values['bright']*255)
+    # lb.changeCold(values['cold'])
+    # lb.changeBright(values['bright'])
     return render_template('playground.html', title='Playground')
 
 
@@ -32,7 +30,8 @@ def streaming():
 
 @app.route('/setup', methods=['GET', 'POST'])
 def setup():
-    ip = request.args.get('address')
+    values = {"ip": request.args.get('address'), "x1": request.args.get('x1'), "y1": request.args.get('y1'), "x2": request.args.get('x2'), "y2": request.args.get('y2')}
+    print(values)
     return render_template('setup.html', title='Setup')
 
 
