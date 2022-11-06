@@ -9,6 +9,7 @@ def calculateAvg(ar,ag,ab,count):
     g = round(ag/count)
     b = round(ab/count)
     return (r,g,b)
+
 def RGBt(rgb):
     lt1.changeRGB(rgb)
 
@@ -36,8 +37,8 @@ def main():
                 else:
                     rgb = calculateAvg(ar,ag,ab,count)
                     ab = ag = ar = count = 0
-                    t2 = Thread(target = RGBt(rgb))
-                    t2.start()
+                    sendRGB = Thread(target = RGBt(rgb))
+                    sendRGB.start()
                     start = time.time()
                 time.sleep(1/40)
             else:
