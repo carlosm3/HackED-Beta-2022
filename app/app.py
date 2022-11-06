@@ -6,7 +6,6 @@ import asyncio
 import nest_asyncio
 nest_asyncio.apply()
 
-
 app = Quart(__name__, template_folder='templates', static_folder='static')
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/playground', methods=['GET', 'POST'])
