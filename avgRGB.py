@@ -49,4 +49,3 @@ def main():
         cv2.destroyAllWindows()
 t1 = Thread(target = main())
 t1.start()
-
