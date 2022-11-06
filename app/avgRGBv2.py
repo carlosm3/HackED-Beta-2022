@@ -5,6 +5,16 @@ from threading import Thread
 from bulbInterface import lightbulb as lb
 
 lt1 = lb("192.168.137.105",(0, 0, 0), 0)
+ip_bulb = "192.168.137.105"
+
+def convertHEXtoRGB(value):
+    value = value.lstrip('#')
+    lv = len(value)
+    return tuple(int(value[i:i + lv // 3], 16) for i in range(0, lv, lv // 3))
+
+def defineip(ip):
+    global ip_bulb
+    ip_bulb = ip
 
 def calculateAvg(ar,ag,ab,count):
     r = round(ar/count)
