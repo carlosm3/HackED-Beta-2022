@@ -5,8 +5,9 @@ from threading import Thread
 from bulbInterface import lightbulb as lb
 
 lt1 = lb("192.168.137.105",(0, 0, 0), 0)
-ip_bulb = "192.168.137.105"
+#ip_bulb = "192.168.137.105"
 
+'''
 def convertHEXtoRGB(value):
     value = value.lstrip('#')
     lv = len(value)
@@ -15,6 +16,7 @@ def convertHEXtoRGB(value):
 def defineip(ip):
     global ip_bulb
     ip_bulb = ip
+'''
 
 def calculateAvg(ar,ag,ab,count):
     r = round(ar/count)
@@ -59,9 +61,8 @@ def main():
             lum -= 10
             if lum <= 0:
                 lum = 0
-            lt1.changeBright(lum)
-        
-        if cv2.waitKey(1) == ord('q'):
+            lt1.changeBright(lum)    
+        elif k.is_pressed("q"):
             break
 
         image = pyautogui.screenshot()
