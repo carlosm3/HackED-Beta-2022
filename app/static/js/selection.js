@@ -33,6 +33,11 @@ function closeFullscreen() {
 
 var div = document.getElementById('div'), x1 = 0, y1 = 0, x2 = 0, y2 = 0;
 
+var coordinateX1 = document.getElementById("x1");
+var coordinateY1 = document.getElementById("y1");
+var coordinateX2 = document.getElementById("x2");
+var coordinateY2 = document.getElementById("y2");
+
 function reCalc() { //This will restyle the div
     var x3 = Math.min(x1,x2); //Smaller X
     var x4 = Math.max(x1,x2); //Larger X
@@ -59,4 +64,8 @@ onmousemove = function(e) {
 
 onmouseup = function(e) {
     div.hidden = 1; //Hide the div
+    coordinateX1.value = x1;
+    coordinateY1.value = y1;
+    coordinateX2.value = x2;
+    coordinateY2.value = y2;
 };

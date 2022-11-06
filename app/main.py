@@ -13,6 +13,7 @@ def index():
 def playground():
     values = {"color": request.args.get('color'), "bright": request.args.get('bright'), "cold": request.args.get('cold'), "warmth": request.args.get('warmth')}
     print(values)
+    
     return render_template('playground.html', title='Playground')
 
 
