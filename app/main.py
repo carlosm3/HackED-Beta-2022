@@ -17,9 +17,9 @@ def playground():
     return render_template('playground.html', title='Playground')
 
 
-@app.route('/streaming', methods=['GET', 'POST'])
-def streaming():
-    return render_template('streaming.html', title='Streaming')
+# @app.route('/streaming', methods=['GET', 'POST'])
+# def streaming():
+#     return render_template('streaming.html', title='Streaming')
 
 
 @app.route('/setup', methods=['GET', 'POST'])
