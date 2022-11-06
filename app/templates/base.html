@@ -5,182 +5,38 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/classic.min.css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <title>Document</title>
+    <link rel="stylesheet" href="static/css/styles.css">
+    {% if title %}
+    <title>Team Name – {{ title }}</title>
+    {% else %}
+    <title>Team Name</title>
+    {% endif %}
 </head>
 
 <body>
     <header>
-        <nav class="navbar navbar-dark bg-dark">
-            <div class="container">
-                <a class="navbar-brand" href="base.html">Team Name</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Features</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Pricing</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                Dropdown link
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
+        <nav class="flex container">
+            <div>
+                <a href="index">Team Name</a>
+            </div>
+            <div class="links">
+                <a href="playground">Playground</a>
+                <a href="streaming">Streaming</a>
             </div>
         </nav>
     </header>
     <main>
-        <style>
-            /* Chrome, Safari, Edge, Opera */
-            input::-webkit-outer-spin-button,
-            input::-webkit-inner-spin-button {
-                -webkit-appearance: none;
-                margin: 0;
-            }
-
-            /* Firefox */
-            input[type="number"] {
-                -moz-appearance: textfield;
-            }
-
-            div.app-container {
-                margin-top: 3rem;
-                max-width: 480px;
-                align-items: left;
-            }
-
-            div.app-container label {
-                display: block;
-            }
-
-            div.app-container input[type="range"] {
-                width: 100%;
-            }
-
-            div.ip>div {
-                display: flex;
-            }
-
-            div>button[type="submit"] {
-                margin-top: 1rem;
-                width: 100%;
-            }
-
-            #color-preview {
-                width: 100%;
-                height: 100px;
-                background-color: #000;
-            }
-        </style>
-        <div class="container app-container">
-            <div>
-                <h2>Settings</h2>
-                <form data-ajax="false">
-                    <div class="form-group ip">
-                        <label for="ip-address" class="">IP Address</label>
-                        <div>
-                            <input type="text" name="address" required
-                                pattern="((^|\.)((25[0-5])|(2[0-4]\d)|(1\d\d)|([1-9]?\d))){4}$" class="form-control"
-                                id="ip-address" value="255.255.255.255" placeholder="255.255.255.255">
-                        </div>
-                    </div>
-                    <div id="color-preview"></div>
-                    <div class="form-group">
-                        <label for="color">Select color</label>
-                        <input type="color" id="color-picker" name="color">
-                    </div>
-                    <div>
-                        <label for="bright">Brightness</label>
-                        <input type="range" min="0" max="255" value="127" class="slider" id="bright" name="bright">
-                    </div>
-                    <div>
-                        <label for="cold">Cold</label>
-                        <input type="range" min="0" max="255" value="127" class="slider" id="cold" name="cold">
-                    </div>
-                    <div>
-                        <label for="warmth">Warmth</label>
-                        <input type="range" min="0" max="255" value="127" class="slider" id="warmth" name="warmth">
-                    </div>
-                    <!-- <script>
-                        document.getElementById('ip-address').addEventListener('keyup', function (e) {
-                            var val = this.value;
-                            if (e.key != 'Backspace') {
-                                if (this.value.length == 3) {
-                                    this.value += '.';
-                                }
-                            }
-                        });
-                    </script> -->
-                    <div class="form-group row">
-                        <div>
-                            <button type="submit" class="btn btn-primary">Change color</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
+        <div class="container content">
+            {% block content %}
+            {% endblock %}
         </div>
     </main>
-    <footer></footer>
-    <script>
-        // Select elements
-        const colorInput = document.getElementById("color-picker");
-        const outputPreview = document.getElementById("color-preview")
-
-        // Pre-populate inputs from URL
-        const queryString = window.location.search;
-        const urlParams = new URLSearchParams(queryString);
-        if (urlParams.has('address')) {
-            document.getElementById('ip-address').value = urlParams.get('address');
-        }
-        if (urlParams.get('color')) {
-            colorInput.value = urlParams.get('color');
-            outputPreview.style.backgroundColor = urlParams.get('color');
-        }
-        if (urlParams.get('bright')) {
-            document.getElementById('bright').value = urlParams.get('bright');
-        }
-        if (urlParams.get('cold')) {
-            document.getElementById('cold').value = urlParams.get('cold');
-        }
-        if (urlParams.get('warmth')) {
-            document.getElementById('warmth').value = urlParams.get('warmth');
-        }
-
-        colorInput.addEventListener("input", function () {
-            var color = colorInput.value;
-            const r = parseInt(color.substr(1, 2), 16)
-            const g = parseInt(color.substr(3, 2), 16)
-            const b = parseInt(color.substr(5, 2), 16)
-            // console.log(`red: ${r}, green: ${g}, blue: ${b}`)
-            console.log(color);
-
-            outputPreview.style.backgroundColor = color;
-        }, false);
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
-    <script src="../static/js/main.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
-        crossorigin="anonymous"></script>
+    <footer>
+        <div class="container flex">
+            <p>Made by Team Name</p>
+        </div>
+    </footer>
+    <script src="static/js/main.js"></script>
 </body>
 
 </html>
