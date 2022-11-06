@@ -44,8 +44,12 @@ def main():
                 time.sleep(1/40)
             else:
                 break
+            
             if k.is_pressed('b'):
-                lt1.changeBright(255)
+                lt1.changeBright(120)
+            elif k.is_pressed('v'):
+                lt1.changeBright(10)
+            
             if cv2.waitKey(1) == ord('q'):
                 break
         vid.release()
