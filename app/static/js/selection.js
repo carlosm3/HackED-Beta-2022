@@ -1,9 +1,7 @@
 const overlay = document.getElementById("overlay");
-const area = document.getElementById("selection-area");
+const selection = document.getElementById("area");
 
 var elem = document.documentElement;
-var startPoint = [0, 0];
-var endPoint = [0, 0];
 
 /* View in fullscreen */
 function openFullscreen() {
