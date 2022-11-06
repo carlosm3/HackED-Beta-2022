@@ -52,7 +52,6 @@ def main():
             start = time.time()
         time.sleep(1/40)
 
-        '''
         if k.is_pressed('b'):
             lum += 10
             if lum >= 255:
@@ -62,10 +61,8 @@ def main():
             lum -= 10
             if lum <= 0:
                 lum = 0
-            lt1.changeBright(lum)
-        '''
-        
-        if cv2.waitKey(1) == ord('q'):
+            lt1.changeBright(lum)    
+        elif k.is_pressed("q"):
             break
 
         image = pyautogui.screenshot()
