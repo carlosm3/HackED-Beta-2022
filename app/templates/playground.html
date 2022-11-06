@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+<div>
+    <h2>Playground</h2>
+    <form data-ajax="false">
+        <div class="ip">
+            <label for="ip-address">IP Address</label>
+            <div>
+                <input type="text" name="address" required
+                    pattern="((^|\.)((25[0-5])|(2[0-4]\d)|(1\d\d)|([1-9]?\d))){4}$" id="ip-address"
+                    value="255.255.255.255" placeholder="255.255.255.255">
+            </div>
+        </div>
+        <div id="color-preview"></div>
+        <div>
+            <label for="color">Select color</label>
+            <input type="color" id="color-picker" name="color">
+        </div>
+        <div>
+            <label for="bright">Brightness</label>
+            <input type="range" min="0" max="255" value="127" id="bright" name="bright">
+        </div>
+        <div>
+            <label for="cold">Cold</label>
+            <input type="range" min="0" max="255" value="127" id="cold" name="cold">
+        </div>
+        <div>
+            <label for="warmth">Warmth</label>
+            <input type="range" min="0" max="255" value="127" id="warmth" name="warmth">
+        </div>
+        <div>
+            <div>
+                <button type="submit">Change color</button>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="static/js/autopopulate.js"></script>
+{% endblock content %}
