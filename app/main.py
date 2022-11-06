@@ -1,8 +1,22 @@
 from flask import Flask, render_template, request
 # import avgRGBv2
-# from bulbInterface import lightbulb as lb
+from bulbInterface import lightbulb as lb
 
 app = Flask(__name__, template_folder='templates', static_folder='static')
+
+
+lt1 = lb("192.168.137.105",(0, 0, 0), 0)
+ip_bulb = "192.168.137.105"
+
+def convertHEXtoRGB(value):
+    if (value):
+        value = value.lstrip('#')
+        lv = len(value)
+        return tuple(int(value[i:i + lv // 3], 16) for i in range(0, lv, lv // 3))
+
+def defineip(ip):
+    global ip_bulb
+    ip_bulb = ip
 
 
 @app.route('/')
@@ -15,11 +29,9 @@ def index():
 def playground():
     values = {"color": request.args.get('color'), "bright": request.args.get('bright'), "cold": request.args.get('cold'), "warmth": request.args.get('warmth')}
     print(values)
-    # rgb = avgRGBv2.convertHEXtoRGB(values['color'])
-    # lb.changeRGB(rgb)
-    # lb.changeBright(values['bright']*255)
-    # lb.changeCold(values['cold'])
-    # lb.changeBright(values['bright'])
+    if (values["color"]):
+        rgb = convertHEXtoRGB(values['color'])
+        lt1 = lb("192.168.137.105", rgb, values['bright'], values['cold'], values['warmth'])
     return render_template('playground.html', title='Playground')
 
 
