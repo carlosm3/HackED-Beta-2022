@@ -1,4 +1,4 @@
-import cv2, time, asyncio
+import cv2, time
 import keyboard as k
 from threading import Thread
 from bulbInterface import lightbulb as lb
