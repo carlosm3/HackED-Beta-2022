@@ -1,4 +1,4 @@
-import cv2, time, imutils, pyautogui
+import cv2, time, pyautogui
 import keyboard as k
 import numpy as np
 from threading import Thread
@@ -23,7 +23,7 @@ def main():
     lum = 0
 
     while True:
-        cv2.imshow("Unironic Image Name", image)
+        #cv2.imshow("Unironic Image Name", image)
         b,g,r = image.mean(axis=(0,1))
         end = time.time()
         if end < start + 1:
