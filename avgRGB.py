@@ -1,5 +1,6 @@
-from threading import Thread
 import cv2, time, asyncio
+import keyboard as k
+from threading import Thread
 from bulbInterface import lightbulb as lb
 
 lt1 = lb("192.168.137.105",(0, 0, 0), 0)
@@ -14,7 +15,7 @@ def RGBt(rgb):
     lt1.changeRGB(rgb)
 
 def main():
-    vid = cv2.VideoCapture("trial.mp4")
+    vid = cv2.VideoCapture("trial1.mp4")
     if vid.isOpened() == False:
         print("Error opening the video file! / video file not found!")
         exit(0)
@@ -43,6 +44,8 @@ def main():
                 time.sleep(1/40)
             else:
                 break
+            if k.is_pressed('b'):
+                lt1.changeBright(255)
             if cv2.waitKey(1) == ord('q'):
                 break
         vid.release()
