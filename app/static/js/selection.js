@@ -1,5 +1,5 @@
 const overlay = document.getElementById("overlay");
-const selection = document.getElementById("area");
+const toggleSelection = document.getElementById("area");
 
 var elem = document.documentElement;
 
@@ -67,3 +67,7 @@ onmouseup = function(e) {
     coordinateX2.value = x2;
     coordinateY2.value = y2;
 };
+
+toggleSelection.addEventListener("click", function() {
+    console.log("clicked");
+});
