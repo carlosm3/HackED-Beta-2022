@@ -32,8 +32,8 @@ class lightbulb:
         self.bright = newBright
         loop.run_until_complete(changeLight(self))
     
-    def changeCold(self,newCold):
-        self.cold = newCold
+    def changeWarm(self,newWarm):
+        self.warm = newWarm
         loop.run_until_complete(changeLight(self))
 
 async def changeLight(light):
