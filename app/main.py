@@ -11,13 +11,20 @@ def index():
 
 @app.route('/playground', methods=['GET', 'POST'])
 def playground():
-    params = {"address": request.args.get('address'), "color": request.args.get('color'), "bright": request.args.get('bright'), "cold": request.args.get('cold'), "warmth": request.args.get('warmth')}
+    values = {"color": request.args.get('color'), "bright": request.args.get('bright'), "cold": request.args.get('cold'), "warmth": request.args.get('warmth')}
+    print(values)
     return render_template('playground.html', title='Playground')
 
 
 @app.route('/streaming', methods=['GET', 'POST'])
 def streaming():
     return render_template('streaming.html', title='Streaming')
+
+
+@app.route('/setup', methods=['GET', 'POST'])
+def setup():
+    ip = request.args.get('address')
+    return render_template('setup.html', title='Setup')
 
 
 if __name__ == '__main__':
