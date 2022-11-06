@@ -78,32 +78,30 @@ main {
     position: absolute;
 }
 
-#streaming {
-    margin: 0 auto;
-    max-width: 500px;
-    width: 100%;
-    text-align: center;
-    h2 {
-        margin-bottom: 1rem;
-    }
-    video {
-        // margin-top: 2px;
-        border: 1px solid black;
-        border-radius: 5px;
-        width: 100%;
-    }
-    & > div:last-of-type {
-        display: flex;
-        justify-content: space-between;
-        button {
-            margin-top: 1rem;
-            min-width: 150px;
-            height: 2rem;
-            width: calc(50% - 3rem);
-        }
-    }
-    // background-color: red;
-}
+// #streaming {
+//     margin: 0 auto;
+//     max-width: 500px;
+//     width: 100%;
+//     text-align: center;
+//     h2 {
+//         margin-bottom: 1rem;
+//     }
+//     video {
+//         border: 1px solid black;
+//         border-radius: 5px;
+//         width: 100%;
+//     }
+//     & > div:last-of-type {
+//         display: flex;
+//         justify-content: space-between;
+//         button {
+//             margin-top: 1rem;
+//             min-width: 150px;
+//             height: 2rem;
+//             width: calc(50% - 3rem);
+//         }
+//     }
+// }
 
 #selection-area {
     position: absolute;
@@ -126,10 +124,6 @@ main {
     background: rgba(0, 0, 0, 0.2);
     z-index: 99;
     display: none;
-}
-
-#coordinates {
-    // display: none;
 }
 
 footer {

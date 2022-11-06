@@ -118,31 +118,6 @@ main {
   position: absolute;
 }
 
-#streaming {
-  margin: 0 auto;
-  max-width: 500px;
-  width: 100%;
-  text-align: center;
-}
-#streaming h2 {
-  margin-bottom: 1rem;
-}
-#streaming video {
-  border: 1px solid black;
-  border-radius: 5px;
-  width: 100%;
-}
-#streaming > div:last-of-type {
-  display: flex;
-  justify-content: space-between;
-}
-#streaming > div:last-of-type button {
-  margin-top: 1rem;
-  min-width: 150px;
-  height: 2rem;
-  width: calc(50% - 3rem);
-}
-
 #selection-area {
   position: absolute;
   background: rgba(87, 144, 177, 0.5);
