@@ -16,6 +16,7 @@ def RGBt(rgb):
     lt1.RGBScale(rgb)
 
 def main():
+    #x,y = pyautogui.size()
     image = pyautogui.screenshot()
     image = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
     start = time.time()
@@ -26,7 +27,7 @@ def main():
         #cv2.imshow("Unironic Image Name", image)
         b,g,r = image.mean(axis=(0,1))
         end = time.time()
-        if end < start + 1:
+        if end < start + 2:
             ab += b
             ag += g
             ar += r
