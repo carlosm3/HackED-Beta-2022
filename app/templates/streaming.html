@@ -1,63 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
-<style>
-    video {
-        margin-top: 2px;
-        border: 1px solid black;
-    }
-
-    .button {
-        cursor: pointer;
-        display: block;
-        width: 160px;
-        border: 1px solid black;
-        font-size: 16px;
-        text-align: center;
-        padding-top: 2px;
-        padding-bottom: 4px;
-        color: white;
-        background-color: darkgreen;
-        text-decoration: none;
-    }
-    
-    .left {
-        margin-right: 10px;
-        float: left;
-        width: 300px;
-        padding: 0px;
-    }
-
-    .right {
-        margin-left: 10px;
-        float: left;
-        width: 160px;
-        padding: 0px;
-    }
-
-    .bottom {
-        clear: both;
-        padding-top: 10px;
-    }
-</style>
-<div class="left">
-    <div id="startButton" class="button">
-        Start
+<h1>Streaming</h1>
+<div id="streaming">
+    <div>
+        <h2>Preview</h2>
+        <video id="preview" width="300" height="200" autoplay muted></video>
     </div>
-    <h2>Preview</h2>
-    <video id="preview" width="300" height="200" autoplay muted></video>
-</div>
-<div class="right">
-    <div id="stopButton" class="button">
-        Stop
+    <div>
+        <button type="button" id="startButton">Start</button>
+        <button type="button" id="stopButton">Stop</button>
     </div>
-    <!-- <h2>Recording</h2>
-    <video id="recording" width="300" height="200" controls></video>
-    <a id="downloadButton" class="button">
-        Download
-    </a> -->
-</div>
-<div class="bottom">
-    <pre id="log"></pre>
 </div>
 <script src="static/js/screenapi.js"></script>
 {% endblock content %}

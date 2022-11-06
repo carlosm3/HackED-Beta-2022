@@ -8,6 +8,13 @@ $dark-gray: #222222;
     font-family: "Open Sans", sans-serif;
 }
 
+h1 {
+    color: #444;
+    font-size: 1.75rem;
+    margin-bottom: 1.25rem;
+    margin-top: 1rem;
+}
+
 .flex {
     display: flex;
 }
@@ -42,20 +49,20 @@ header {
     }
 }
 
-.content {
-    // height: calc(100vh - 120px);
-    // min-height: fit-content;
+main {
+    height: calc(100vh - 120px);
+    min-height: 500px;
 }
 
 #playground {
     height: fit-content;
-    width: 480px;
+    // width: 480px;
     margin: 0 auto;
     label {
         display: block;
         margin-bottom: 0.5rem;
     }
-    input[type=range]{
+    input[type="range"] {
         width: 100%;
     }
     #color-preview {
@@ -63,6 +70,38 @@ header {
         height: 100px;
         background-color: $dark-gray;
     }
+}
+
+#div {
+    border: 1px dotted #000;
+    position: absolute;
+}
+
+#streaming {
+    margin: 0 auto;
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+    h2 {
+        margin-bottom: 1rem;
+    }
+    video {
+        // margin-top: 2px;
+        border: 1px solid black;
+        border-radius: 5px;
+        width: 100%;
+    }
+    & > div:last-of-type {
+        display: flex;
+        justify-content: space-between;
+        button {
+            margin-top: 1rem;
+            min-width: 150px;
+            height: 2rem;
+            width: calc(50% - 3rem);
+        }
+    }
+    // background-color: red;
 }
 
 #selection-area {
@@ -91,7 +130,6 @@ header {
 #coordinates {
     // display: none;
 }
-
 
 footer {
     width: 100%;
