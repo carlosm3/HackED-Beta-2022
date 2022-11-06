@@ -43,5 +43,6 @@ class lightbulb:
 
 async def changeLight(light):
     await (light.ip).turn_on(PilotBuilder(rgb = light.rgb, brightness = light.bright, warm_white = light.warm, cold_white = light.cold))
+
 async def off(light):
     await (light.ip).turn_off()
