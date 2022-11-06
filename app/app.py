@@ -4,6 +4,7 @@ from quart import render_template
 from bulbInterface import lightbulb
 import asyncio
 import nest_asyncio
+#from avgRGBv2 import main1
 nest_asyncio.apply()
 
 
@@ -21,8 +22,19 @@ async def playground():
     
 @app.route('/stream', methods=['GET', 'POST'])
 async def setup():
-    values = {"x1": request.args.get('x1'), "y1": request.args.get('y1'), "x2": request.args.get('x2'), "y2": request.args.get('y2')}
-
+    x1,x2,y1,y2 = request.args.get('x1'),request.args.get('y1'),request.args.get('x2'),request.args.get('y2')
+    if(x1>x2):
+        left=x2
+    else:
+        left=x1
+    if(y1>y2):
+        top=y2
+    else:
+        top=y2
+    width=abs(x1-x2)
+    height=abs(y1,y2)
+    #todo get this working
+    #await avgRGBv2.main1((left,top,width,height))
     return await render_template('stream.html', title='Stream')
 
 if __name__ == '__main__':
