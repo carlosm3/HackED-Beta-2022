@@ -12,7 +12,7 @@ def calculateAvg(ar,ag,ab,count):
     return (r,g,b)
 
 def RGBt(rgb):
-    lt1.changeRGB(rgb)
+    lt1.RGBScale(rgb)
 
 def main():
     vid = cv2.VideoCapture("trial1.mp4")
@@ -28,7 +28,7 @@ def main():
         while vid.isOpened():
             check, frame = vid.read()
             if check == True:
-                cv2.imshow("Frame:", frame)
+                cv2.imshow("Unironic Frame Name", frame)
                 b,g,r = frame.mean(axis=(0,1))
                 end = time.time()
                 if end < start + 2:
