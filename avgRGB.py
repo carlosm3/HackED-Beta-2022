@@ -24,6 +24,7 @@ def main():
         print("FPS:", vid.get(cv2.CAP_PROP_FPS))
         start = time.time()
         ab = ag = ar = count = 0
+        lum = 0
         while vid.isOpened():
             check, frame = vid.read()
             if check == True:
@@ -46,9 +47,15 @@ def main():
                 break
 
             if k.is_pressed('b'):
-                lt1.changeBright(255)
+                lum += 10
+                if lum >= 255:
+                    lum = 255
+                lt1.changeBright(lum)
             elif k.is_pressed('v'):
-                lt1.changeBright(25)
+                lum -= 10
+                if lum <= 0:
+                    lum = 0
+                lt1.changeBright(lum)
             
             if cv2.waitKey(1) == ord('q'):
                 break
