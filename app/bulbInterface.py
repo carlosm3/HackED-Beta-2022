@@ -2,7 +2,7 @@ import asyncio
 import time
 from pywizlight import wizlight, PilotBuilder, discovery
 
-loop = asyncio.get_event_loop()
+
 #class for encapsulating data on a lightbulb and changing said data
 #rgb has to be declared like this (red, green, blue), e..g (100,100,100)
 #all values go from 0 to 255 except ip which is within ipv4 range
@@ -12,12 +12,17 @@ class lightbulb:
         self.cold = cold
         self. warm = warm
         self.rgb = rgb
+        if self.rgb==(None,None,None):
+            self.rgb=(1,1,1)
+        
         self.bright = bright
     
     def turnOn(self):
+        loop = asyncio.get_event_loop()
         loop.run_until_complete(changeLight(self))
     
     def turnOff(self):
+        loop = asyncio.get_event_loop()
         loop.run_until_complete(off(self))
     
     def changeRGB(self,newrgb):
@@ -27,18 +32,22 @@ class lightbulb:
         self.rgb = newrgb
         self.cold = round(sum(newrgb)/21)
         self.bright = max(newrgb)
+        loop = asyncio.get_event_loop()
         loop.run_until_complete(changeLight(self))
     
     def changeCold(self,newCold):
         self.cold = newCold
+        loop = asyncio.get_event_loop()
         loop.run_until_complete(changeLight(self))
     
     def changeBright(self,newBright):
         self.bright = newBright
+        loop = asyncio.get_event_loop()
         loop.run_until_complete(changeLight(self))
     
     def changeWarm(self,newWarm):
         self.warm = newWarm
+        loop = asyncio.get_event_loop()
         loop.run_until_complete(changeLight(self))
 
 async def changeLight(light):
