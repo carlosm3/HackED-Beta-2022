@@ -11,8 +11,12 @@ app = Quart(__name__, template_folder='templates', static_folder='static')
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/playground', methods=['GET', 'POST'])
 async def playground():
-    light1 = lightbulb("192.168.137.105",(255,0,0),0)
+    light1 = lightbulb("192.168.137.105",(1,1,1),100)
     light1.turnOn()
+    r,g,b,br,cold,warm = request.args.get('r',default=1,type=int),request.args.get('b',default=1,type=int) ,request.args.get('g',default=1,type=int),request.args.get('a',default=1,type=int) ,request.args.get('cold',default=1,type=int) ,request.args.get('warm',default=1,type=int) 
+    light1 = lightbulb("192.168.137.105",(r,b,g),br*255,cold,warm)
+    light1.turnOn()
+
     return await render_template('playground.html', title='Playground')
     
 @app.route('/stream', methods=['GET', 'POST'])
