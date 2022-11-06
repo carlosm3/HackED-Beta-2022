@@ -1,19 +1,18 @@
-import cv2, time, asyncio, nest_asyncio
+from threading import Thread
+import cv2, time, asyncio
 from bulbInterface import lightbulb as lb
 
 lt1 = lb("192.168.137.105",(0, 0, 0), 0)
-nest_asyncio.apply()
 
-async def calculateAvg(ar,ag,ab,count):
+def calculateAvg(ar,ag,ab,count):
     r = round(ar/count)
     g = round(ag/count)
     b = round(ab/count)
     return (r,g,b)
-
-async def sendRGB(rgb):
+def RGBt(rgb):
     lt1.changeRGB(rgb)
 
-async def main():
+def main():
     vid = cv2.VideoCapture("trial.mp4")
     if vid.isOpened() == False:
         print("Error opening the video file! / video file not found!")
@@ -35,12 +34,10 @@ async def main():
                     ar += r
                     count += 1
                 else:
-                    rgb = await calculateAvg(ar,ag,ab,count)
-                    check1 = time.time()
-                    await sendRGB(rgb)
-                    check2 = time.time()
-                    print(check2-check1, "seconds")
+                    rgb = calculateAvg(ar,ag,ab,count)
                     ab = ag = ar = count = 0
+                    t2 = Thread(target = RGBt(rgb))
+                    t2.start()
                     start = time.time()
                 time.sleep(1/40)
             else:
@@ -49,5 +46,6 @@ async def main():
                 break
         vid.release()
         cv2.destroyAllWindows()
+t1 = Thread(target = main())
+t1.start()
 
-asyncio.run(main())
