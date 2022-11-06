@@ -22,6 +22,11 @@ class lightbulb:
     
     def changeRGB(self,newrgb):
         self.rgb = newrgb
+    
+    def RGBScale(self,newrgb):
+        self.rgb = newrgb
+        self.cold = round(sum(newrgb)/21)
+        self.bright = max(newrgb)
         loop.run_until_complete(changeLight(self))
     
     def changeCold(self,newCold):
